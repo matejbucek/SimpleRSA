@@ -13,6 +13,7 @@ public class RSA {
 		//Musí být prvočísla. Doporučuje se, aby byly v podobném rozsahu a lišili se jen o pár míst.
 		//Pokud chceme šifrovat text, doporučuji minimálně toto nastavení: int p = 61, q = 53;
 		//Tato prvočísla jsou základ pro klíče. Pro každý pár musíme tudíž mít jiná prvočísla (náhodná).
+		//Tato čísla jsou soukromá a nesmí je nikdo zjistit.
 		int p = 61, q = 53;
 		
 		//Modulo - použito v privátním i veřejném klíči
