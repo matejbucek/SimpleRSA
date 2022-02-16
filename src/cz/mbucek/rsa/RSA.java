@@ -29,6 +29,8 @@ public class RSA {
 		
 		//Součást privátního klíče
 		int d = modInverse(e, ctf);
+		if(d == e) d += ctf;
+		
 		return new KeyPair(new PrivateKey(n, d), new PublicKey(n, e));
 	}
 	
@@ -68,11 +70,7 @@ public class RSA {
 	
 	public static String charArrayToString(IntStream stream) {
 		var text = new StringBuilder();
-		stream.forEach(
-				v -> {
-					text.append((char) v);
-				}
-		);
+		stream.forEach(v -> text.append((char) v));
 		return text.toString();
 	}
 	
@@ -124,9 +122,9 @@ public class RSA {
 	 * @return d - součást privátního klíče
 	 */
 	public static int modInverse(int e, int ctf) {
-        //for (int x = 1; x < m; x++)
-        //    if (((a%m) * (x%m)) % m == 1)
-        //        return x;
+        //for (int x = 1; x < ctf; x++)
+        //    if (((e%ctf) * (x%ctf)) % ctf == 1)
+        //    	System.out.println(x);
 		return BigInteger.valueOf(e).modInverse(BigInteger.valueOf(ctf)).intValue();
 	}
 	
